@@ -1,0 +1,9 @@
+---
+- name: Not Idempotent
+  hosts: node2
+  tasks:
+
+    - name: Not using a module
+      shell: 
+        echo "hostname" >> /tmp/not_idempotent.txt
+...
