@@ -1,9 +1,0 @@
----
-# demo a non-idempotent playbook
-- name: "vm group 2"
-  tasks: 
-  
-    - name: Using a Shell to remove idempotency 
-      shell:
-        echo "Not Idempotent change" >> ~/Not-Idempotent.txt
-...
