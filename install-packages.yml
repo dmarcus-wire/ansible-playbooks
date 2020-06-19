@@ -1,6 +1,6 @@
 ---
 - name: mariadb packages installed and service running
-  hosts: node2
+  hosts: all
   
   tasks:
     - name: install packages
