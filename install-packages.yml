@@ -1,22 +1,20 @@
 ---
 - name: mariadb packages installed and service running
-  hosts: all
-  vars:
-    mariadb-packages:
-      - mariadb-server
-      - python3-PyMySQL
-
+  hosts: node2
+  
   tasks:
     - name: install packages
       yum:
-        name: "{{ items }}"
-        state: present
-      loop: "{{ mariadb-packages}}"
+        name: "{{ packages }}"
+      vars: 
+          packages: 
+          - mariadb
+          - python3-PyMySQL
       when: ansible_distribution == "Red Hat" 
       
     - name: start MariaDB service
       service:
         name: mariadb
         state: started
-        enabled: true
+        enabled: True
 ...
