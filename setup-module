@@ -1,0 +1,10 @@
+---
+# a playbook with the same execution as running ad hoc command $ ansible <host> -m setup
+- name: Gather Facts using module setup
+  hosts: all 
+  tasks: 
+  
+    - name: Print all facts
+      debug:
+        var: ansible_facts
+...
