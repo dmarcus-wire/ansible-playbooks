@@ -1,0 +1,9 @@
+---
+- name: idempotent change
+  hosts: all
+  tasks:
+  
+    - name: using a module for idempotency
+      copy:
+        content: "hostname"
+        dest: /tmp/idempotent.txt
