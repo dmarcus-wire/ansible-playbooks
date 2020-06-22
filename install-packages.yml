@@ -8,13 +8,13 @@
         name: "{{ packages }}"
       vars: 
           packages: 
-          - mariadb
+          - mariadb-server
           - python3-PyMySQL
       when: ansible_distribution == "Red Hat" 
       
     - name: start MariaDB service
       service:
-        name: mariadb
+        name: mariadb-server
         state: started
         enabled: True
 ...
