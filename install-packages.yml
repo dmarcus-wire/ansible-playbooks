@@ -7,8 +7,8 @@
       yum:
         name: "{{ packages }}"
       vars: 
-          packages: 
-          - mariadb-server
+        packages: 
+        - mariadb-server
       when: ansible_distribution == "Red Hat" 
       
     - name: start MariaDB service
