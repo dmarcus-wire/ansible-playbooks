@@ -17,17 +17,4 @@
         name: mariadb-server
         state: started
         enabled: True
-        
-    - name: verify service status
-      shell: 
-        cmd: mysql -u root; status
-        register: output
-        
-    - debug: print output from previous command
-          var: output
-          verbosity: 2
-      
-    - name: exit service
-      shell:
-        cmd: exit
 ...
