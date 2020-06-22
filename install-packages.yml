@@ -7,14 +7,12 @@
       yum:
         name: "{{ packages }}"
       vars: 
-          packages: 
-          - mariadb-server
-          - python3-PyMySQL
+        packages: 
+        - mariadb-server
       when: ansible_distribution == "Red Hat" 
       
     - name: start MariaDB service
       service:
-        name: mariadb-server
+        name: mariadb
         state: started
-        enabled: True
 ...

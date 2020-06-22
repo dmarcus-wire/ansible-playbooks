@@ -2,21 +2,13 @@
 - name: mariadb stopped and packages uninstalled 
   hosts: all
   
-  tasks:
-    - name: Stop MariaDB service
-      service:
-        name: mariadb-server
-        state: stopped
-        
+  tasks:        
     - name: uninstall packages
       yum:
         name: "{{ packages }}"
         state: removed
       vars: 
           packages: 
-          - mariadb-server
-          - python3-PyMySQL
-      when: ansible_distribution == "Red Hat" 
-      
-
+          - mariadb
+      when: ansible_distribution == "RedHat" 
 ...
