@@ -5,9 +5,9 @@
   tasks:
     - name: Ensure line exists
       lineinfile:
-        state: present
-        destination: ./lineInFile
-        line: dont panic
+        path: /tmp/testfile
+        line: "dont panic"
+        create: yes
       notify: Restart the ssh daemon
 
   handlers:
