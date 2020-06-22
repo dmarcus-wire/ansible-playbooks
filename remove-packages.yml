@@ -2,12 +2,7 @@
 - name: mariadb stopped and packages uninstalled 
   hosts: all
   
-  tasks:
-    - name: Stop MariaDB service
-      service:
-        name: mariadb
-        state: stopped
-        
+  tasks:        
     - name: uninstall packages
       yum:
         name: "{{ packages }}"
