@@ -1,0 +1,16 @@
+---
+- name: Implementing variables
+  hosts: all
+  vars: 
+
+    packages:
+      - httpd
+      - nmap
+
+    tasks:
+
+      - name: Install software
+        yum:
+          name: "{{ packages }}"
+          state: present
+...

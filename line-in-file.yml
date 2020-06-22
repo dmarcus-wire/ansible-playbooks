@@ -1,0 +1,18 @@
+---
+- name: line exists in file
+  hosts: all
+  
+  tasks:
+    - name: Ensure line exists
+      lineinfile:
+        state: present
+        destination: ./lineInFile
+        line: dont panic
+      notify: Restart the ssh daemon
+
+  handlers:
+    - name: Restart the ssh daemon
+      service:
+        name: sshd
+        state: restarted
+...
