@@ -10,5 +10,5 @@
       vars: 
           packages: 
           - mariadb
-      when: ansible_distribution == "Red Hat Enterprise Linux" 
+      when: ansible_distribution == "RedHat" 
 ...
