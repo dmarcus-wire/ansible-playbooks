@@ -13,6 +13,6 @@
       
     - name: start MariaDB service
       service:
-        name: mariadb-server.service
+        name: mariadb.service
         state: started
 ...
