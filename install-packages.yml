@@ -9,12 +9,10 @@
       vars: 
           packages: 
           - mariadb-server
-          - python3-PyMySQL
       when: ansible_distribution == "Red Hat" 
       
     - name: start MariaDB service
       service:
         name: mariadb-server
         state: started
-        enabled: True
 ...
