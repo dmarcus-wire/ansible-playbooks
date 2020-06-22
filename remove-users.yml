@@ -1,0 +1,25 @@
+---
+- name: Variable and Array
+  hosts: all
+ 
+  vars:
+
+# this data could come from a database or csv file, could also set UID, GID, etc.
+    users:
+      dmarcus:
+        uname: dmarcus
+        fname: David
+        lname: Marcus
+        home: /home/dmarcus
+        shell: /sbin/nologin
+
+  tasks:
+
+    - name: Remove users dmarcus
+      # check the ansible-doc user module for list of arguments
+      user:
+        # another way to write = "{{ users['dmarcus']['uname'] }}"
+        name: dmarcus
+        state: absent
+        remove: yes
+...
