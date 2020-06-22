@@ -11,7 +11,7 @@
     - name: uninstall packages
       yum:
         name: "{{ packages }}"
-        state: absent
+        state: removed
       vars: 
           packages: 
           - mariadb-server
