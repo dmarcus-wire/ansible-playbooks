@@ -3,11 +3,11 @@
   hosts: all
   
   tasks:
-      - name: Stop MariaDB service
-        service:
-          name: mariadb
-          state: stopped
-          enabled: false
+    - name: Stop MariaDB service
+      service:
+        name: mariadb
+        state: stopped
+        enabled: false
         
     - name: uninstall packages
       yum:
