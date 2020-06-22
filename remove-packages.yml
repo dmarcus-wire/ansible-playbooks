@@ -5,7 +5,7 @@
   tasks:
     - name: Stop MariaDB service
       service:
-        name: mariadb-server
+        name: mariadb
         state: stopped
         
     - name: uninstall packages
@@ -14,9 +14,6 @@
         state: removed
       vars: 
           packages: 
-          - mariadb-server
-          - python3-PyMySQL
+          - mariadb
       when: ansible_distribution == "Red Hat" 
-      
-
 ...
