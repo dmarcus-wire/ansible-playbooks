@@ -1,7 +1,8 @@
 ---
 - name: Variable and Array
   hosts: all
- 
+  become : true
+
   vars:
 
 # this data could come from a database or csv file, could also set UID, GID, etc.
