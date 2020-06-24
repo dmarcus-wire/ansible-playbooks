@@ -1,6 +1,6 @@
 ---
 - name: Not Idempotent
-  hosts: node2
+  hosts: groupB
   tasks:
 
     - name: Not using a module
