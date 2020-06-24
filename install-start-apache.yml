@@ -1,6 +1,6 @@
 ---
 - name: install and start apache
-  hosts: all
+  hosts: groupB
   become: yes
 
   tasks:
