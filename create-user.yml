@@ -13,10 +13,10 @@
         home: /home/dmarcus
         shell: /sbin/nologin
 
-      tstewart:
-        uname: tstewart
-        fname: Tim
-        lname: Stewart
+      david:
+        uname: david
+        fname: d
+        lname: m
         home: /home/tstewart
         shell: /bin/bash
 
