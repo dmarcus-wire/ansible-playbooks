@@ -1,0 +1,21 @@
+---
+- name: Register and subscribe RHEL systems
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Register RHEL systems
+      redhat_subscription:
+        username:
+        password:
+        auto_attach: true
+      when: "ansible_distribution == 'Red Hat'"
+
+    - name: RHSM Repo
+      rhsm_repository:
+        name:
+          - "rhel-8-for-x86_64-baseos-rpms"
+          - "rhel-8-for-x86)64-appstream-rpms"
+        state: present
+...

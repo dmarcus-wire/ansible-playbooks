@@ -1,0 +1,39 @@
+---
+- name: Add user and assign groups
+  hosts: all
+  become: true
+
+  vars:
+    - user: automation_user
+    - group: wheek
+
+  tasks:
+
+    - name: Ensure {{ group }} exists
+      group: 
+        name: wheel
+        state: present
+  
+    - name: Add {{ user }} to hosts
+      user: 
+        #the only requirement in the user module and is usually the service account or user account
+        name: "{{ user }}"
+        #sets the user's shell. On other operating systems, the default shell is decided by the tool being used.
+        shell: /bin/bash
+        group: wheel
+        #if you do not use the append parameter then the groups will overwrite in place.
+        append: true
+        generate_ssh_key: yes
+        ssh_key_bits: 2048
+        ssh_key_file: .ssh/id_my_rsa
+        # other parameteres comment, group, groups, home, create_home, system, uid
+        state: present
+
+    #If you have a large number of host keys to manage you will want to use the known_hosts module. The known_hosts module lets you add or remove host keys from the known_hosts file on managed host.
+    - name: Copy known hosts to end points
+        #A lookup plugin allows Ansible to access data from outside sources
+        known_hosts:
+            path: /etc/ssh/known_hosts
+            name: "{{ user }}"
+            key: "{{ lookup('file', 'pubkeys/{{ user }}') }}
+...

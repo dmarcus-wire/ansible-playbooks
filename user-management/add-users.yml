@@ -1,0 +1,40 @@
+---
+- name: Create users per user-list.yml file
+  hosts: webservers
+  vars_files:
+    - vars/user-list.yml
+
+  tasks:
+
+    - name: Add admin group
+      group:
+        name: webadmin 
+        state: present
+
+    - name: Create users from file
+      user:
+        name: "{{ item.username }}"
+        group: "{{ item.groups }}"
+        generate_ssh_key: true
+      loop: "{{ users }}"
+
+    - name: Modify sudo config to allows members to sudo without password
+      copy:
+        content: "%webadmin ALL=(ALL) NOPASSWD: ALL"
+        dest: /etc/sudoers.d/webadmin
+        mode: 0440
+
+    - name: Disable root login via ssh
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^PermitRootLogin"
+        line: "PermitRootLogin no"
+      notify: "restart sshd"
+
+handlers:
+  - name: restart sshd
+    service:
+      name: sshd
+      state: restarted
+
+...

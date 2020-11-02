@@ -1,0 +1,32 @@
+---
+- name: Manage Software Baseline
+  hosts: dev
+  become: true
+
+  tasks:
+   
+  - name: Gather information about installed packages
+    package_manager:
+      manager: auto
+
+  - name: Show package facts gathered
+    debug:
+      var: ansible_facts.packages
+
+  - name: Install http on RHEL web servers
+    yum:
+      name: httpd
+      state: latest
+    when: "ansible_distribution == 'Red Hat'"
+
+  - name: Install apache2 on ubuntu web servers
+    yum:
+      name: apache2
+      state: latest
+    when: "ansible_distribution == 'Ubuntu'"
+
+  - name: Update all packages to latest
+    package:
+      name: '*'
+      state: latest
+...

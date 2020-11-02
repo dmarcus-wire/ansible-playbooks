@@ -1,0 +1,10 @@
+---
+- name: Reboot after patching
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Reboot module
+      reboot:
+        reboot_timeout: 180
+...
