@@ -1,0 +1,6 @@
+[packages]
+web_pkg: httpd
+db_pkg: mariadb-server
+
+[users]
+user1: david

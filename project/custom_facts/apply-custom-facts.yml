@@ -1,0 +1,19 @@
+---
+- name: apply the custom.fact file to the managed hosts
+  hosts: all
+  gather_facts: false
+  vars:
+    facts_dir: /etc/ansible/facts.d
+    facts_src: ./custom.fact
+
+  tasks:
+    - name: create the remote dir {{ facts_dir }}
+      file:
+        state: directory
+        path: "{{ facts_dir }}"
+        recurse: true
+      
+    - name: copy over the custom.fact file
+      copy:
+        src: "{{ facts_src }}"
+        dest: "{{ facts_dir }}"

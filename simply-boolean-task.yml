@@ -1,0 +1,12 @@
+---
+- name: run when boolean value is tru
+  hosts: all
+  vars:
+    boolean: true
+
+  tasks:
+    - name: install package when {{ boolean }} is true
+      yum:
+        name: httpd
+        state: present
+      when: boolean
